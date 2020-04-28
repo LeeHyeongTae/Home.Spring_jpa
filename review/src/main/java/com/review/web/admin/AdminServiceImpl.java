@@ -1,4 +1,4 @@
-package com.review.web.member;
+package com.review.web.admin;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,16 +13,16 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class AdminServiceImpl implements AdminService{
 	private Map<String, Object> map;
 	public final static String FILE_PATH= "/Volumes/Macintosh HD/Spring-workspace/review/src/main/resources/static/member/";
 	
-	public MemberServiceImpl() {
+	public AdminServiceImpl() {
 		map = new HashMap<>();
 	}
 
 	@Override
-	public void join(Member member) {
+	public void join(Admin member) {
 		map.put(member.getUserid(), member);
 	}
 
@@ -32,10 +32,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Member login(Member member) {
-		Member returnMember = null;
+	public Admin login(Admin member) {
+		Admin returnMember = null;
 		if(map.containsKey(member.getUserid())) {
-			Member m = detail(member.getUserid());
+			Admin m = detail(member.getUserid());
 			if(member.getPassword().equals(m.getPassword())) {
 				returnMember = m;
 			}
@@ -44,8 +44,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Member detail(String userid) {
-		return (Member) map.get(userid);
+	public Admin detail(String userid) {
+		return (Admin) map.get(userid);
 	}
 
 	@Override
@@ -54,13 +54,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean update(Member member) {
+	public boolean update(Admin member) {
 		map.replace(member.getUserid(), member);
 		return true;
 	}
 
 	@Override
-	public boolean delete(Member member) {
+	public boolean delete(Admin member) {
 		map.remove(member.userid);
 		return true;
 	}
@@ -72,7 +72,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void saveFile(Member member) {
+	public void saveFile(Admin member) {
 		try {
 			File file = new File(FILE_PATH+"list.txt");
 			@SuppressWarnings("resource")
@@ -87,8 +87,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<Member> readFile() {
-		List<Member> memberList = new ArrayList<>();
+	public List<Admin> readFile() {
+		List<Admin> memberList = new ArrayList<>();
 		List<String> list = new ArrayList<>(); 
 		try {
 			File file = new File(FILE_PATH+"list.txt");
@@ -102,7 +102,7 @@ public class MemberServiceImpl implements MemberService{
 		} catch(Exception e) {
 			System.out.println("읽기 오류");
 		}
-		Member m = new Member();
+		Admin m = new Admin();
 		for(int i=0; i<list.size(); i++) {
 			String[] arr = list.get(i).split(",");
 			m.setUserid(arr[0]);

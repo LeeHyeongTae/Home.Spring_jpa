@@ -1,7 +1,6 @@
 package com.review.web.user;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +22,14 @@ public class UserController {
 	
 	@PostMapping("/signup")
 	public Messenger signup(@RequestBody User user) {
-//		int count = userService.count();
-//		return (userService.count()==count+1)?Messenger.SUCCESS:Messenger.FAIL;
-		userService.saveFile(user);
-		return Messenger.SUCCESS;
+		int count = userService.count();
+		return (userService.count()==count+1)?Messenger.SUCCESS:Messenger.FAIL;
 	}
 	
-	@GetMapping("/list")
-	public List<User> list(){
-		return userService.readFile();
-	}
+//	@GetMapping("/list")
+//	public List<User> list(){
+//		return userService.list();
+//	}
 	
 	
 	@PostMapping("/signin")

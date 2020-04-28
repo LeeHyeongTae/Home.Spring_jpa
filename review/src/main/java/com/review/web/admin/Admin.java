@@ -1,10 +1,10 @@
-package com.review.web.member;
+package com.review.web.admin;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class Member {
+public class Admin {
 	String userid, name, password, ssn, address;
 	
 	@Override

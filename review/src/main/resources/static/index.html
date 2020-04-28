@@ -3,110 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Style the header */
 header {
-  background-color: #666;
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
+	background-color: #666;
+	padding: 30px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
 }
 
 /* Create two columns/boxes that floats next to each other */
 nav {
-  float: left;
-  width: 30%;
-  height: 300px; /* only for demonstration, should be removed */
-  background: #ccc;
-  padding: 20px;
+	float: left;
+	width: 30%;
+	height: 300px; /* only for demonstration, should be removed */
+	background: #ccc;
+	padding: 20px;
 }
 
 /* Style the list inside the menu */
 nav ul {
-  list-style-type: none;
-  padding: 0;
+	list-style-type: none;
+	padding: 0;
 }
 
 article {
-  float: left;
-  padding: 20px;
-  width: 70%;
-  background-color: #f1f1f1;
-  height: 300px; /* only for demonstration, should be removed */
+	float: left;
+	padding: 20px;
+	width: 70%;
+	background-color: #f1f1f1;
+	height: 300px; /* only for demonstration, should be removed */
 }
 
 /* Clear floats after the columns */
 section:after {
-  content: "";
-  display: table;
-  clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
 
 /* Style the footer */
 footer {
-  background-color: #777;
-  padding: 10px;
-  text-align: center;
-  color: white;
+	background-color: #777;
+	padding: 10px;
+	text-align: center;
+	color: white;
 }
 
-@media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
-  }
+@media ( max-width : 600px) {
+	nav, article {
+		width: 100%;
+		height: auto;
+	}
 }
 </style>
 </head>
 <body>
 
-<header>
-  <h2>로그인</h2>
-</header>
+	<header>
+		<h2>로그인</h2>
+	</header>
 
-<section>
-  <nav>
-    <ul>
-      <li><a id="join_a" >관리자 등록</a></li>
-      <li><a id="login_a">관리자 접속</a></li>
-      <li><a id="signup_a" >사용자 가입</a></li>
-      <li><a id="signin_a">사용자 로그인</a></li>
-    </ul>
-  </nav>
-  
-  <article>
-   <form action="#">
-   	<label>ID </label> <br>
-   	<input id="userid" type="text"/> <br>
-   	<label>PASSWORD</label><br>
-   	<input id="password" type="text"/><br>
-   	<input id="login-button" type="button" value="user list 로그인">
-   	<input id="adminLogin-button" type="button" value="admin list 로그인"><br>
-   	<input id="cancel-button" type="button" value="취소">
-   	
-   </form>
-  </article>
-</section>
+	<section>
+		<nav>
+			<ul>
+				<li><a id="join_a">관리자 등록</a></li>
+				<li><a id="login_a">관리자 접속</a></li>
+				<li><a id="signup_a">사용자 가입</a></li>
+				<li><a id="signin_a">사용자 로그인</a></li>
+			</ul>
+		</nav>
 
-<footer>
-  <p>Footer</p>
-</footer>
-<script type="text/javascript">
+		<article>
+			<form action="#">
+				<label>ID </label> <br> <input id="userid" type="text" /> <br>
+				<label>PASSWORD</label><br> <input id="password" type="text" /><br>
+				<input id="login-button" type="button" value="user list 로그인">
+				<input id="adminLogin-button" type="button" value="admin list 로그인"><br>
+				<input id="cancel-button" type="button" value="취소">
+
+			</form>
+		</article>
+	</section>
+
+	<footer>
+		<p>Footer</p>
+	</footer>
+	<script type="text/javascript">
 $('#join_a')
 	.css('cursor','pointer')
 	.click(e=>{
 		e.preventDefault()
-		location.href = "member/join.html"
+		location.href = "admin/join.html"
 })
 $('#login_a')
 	.css('cursor','pointer')
@@ -129,7 +128,7 @@ $('#signin_a')
 $('#login-button').click(e =>{
 	e.preventDefault()
 	$.ajax({
-		url: '/member/login',
+		url: '/admin/login',
 		type: 'post',
 		data: JSON.stringify(
 				{userid: $('#userid').val(),
@@ -138,7 +137,7 @@ $('#login-button').click(e =>{
 		contentType: 'application/json',
 		success : d => {
 			if(d.messenger === 'SUCCESS'){
-				location.href = "member/list.html"
+				location.href = "admin/list.html"
 			}else{
 				alert('다시 로그인 해주세요')
 				location.href = "index.html"
@@ -152,7 +151,7 @@ $('#login-button').click(e =>{
 $('#adminLogin-button').click(e =>{
 	e.preventDefault()
 	$.ajax({
-		url: '/member/login',
+		url: '/admin/login',
 		type: 'post',
 		data: JSON.stringify(
 				{userid: $('#userid').val(),
@@ -161,7 +160,7 @@ $('#adminLogin-button').click(e =>{
 		contentType: 'application/json',
 		success : d => {
 			if(d.messenger === 'SUCCESS'){
-				location.href = "member/memberList.html"
+				location.href = "admin/List.html"
 			}else{
 				alert('다시 로그인 해주세요')
 				location.href = "index.html"

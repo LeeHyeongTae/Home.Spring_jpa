@@ -1,4 +1,4 @@
-package com.review.web.member;
+package com.review.web.admin;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,20 +18,20 @@ import com.review.web.util.Messenger;
 
 @RestController
 @RequestMapping("/member")
-public class MemberController {
-	@Autowired MemberService memberService;
+public class AdminController {
+	@Autowired AdminService memberService;
 	
 	@PostMapping("/join")
-	public Messenger join(@RequestBody Member member) {
+	public Messenger join(@RequestBody Admin member) {
 		int count = memberService.count();
 		memberService.join(member);
 		return (memberService.count()==count+1)? Messenger.SUCCESS:Messenger.FAIL;
 	}
 	
 	@PostMapping("/login")
-	public Map<String, Object> login(@RequestBody Member member) {
+	public Map<String, Object> login(@RequestBody Admin member) {
 		Map<String, Object> returnMap = new HashMap<>();
-		Member joinedMember = memberService.login(member);
+		Admin joinedMember = memberService.login(member);
 		if(joinedMember!=null) {
 			returnMap.put("member", joinedMember);
 			returnMap.put("messenger", Messenger.SUCCESS);
@@ -42,12 +42,12 @@ public class MemberController {
 	}
 	
 	@GetMapping("/memberList")
-	public List<Member> memberList(){
+	public List<Admin> memberList(){
 		return memberService.readFile();
 	}
 	
 	@GetMapping("/detail/{userid}")
-	public Member detail(@PathVariable String userid) {
+	public Admin detail(@PathVariable String userid) {
 		return memberService.detail(userid);
 	}
 	
@@ -57,12 +57,12 @@ public class MemberController {
 	}
 	
 	@PutMapping("/update")
-	public Messenger update(@RequestBody Member member) {
+	public Messenger update(@RequestBody Admin member) {
 		return (memberService.update(member))? Messenger.SUCCESS:Messenger.FAIL;
 	}
 	
 	@DeleteMapping("/delete")
-	public Messenger delete(@RequestBody Member member) {
+	public Messenger delete(@RequestBody Admin member) {
 		return (memberService.delete(member)) ? Messenger.SUCCESS:Messenger.FAIL;
 	}
 	 
