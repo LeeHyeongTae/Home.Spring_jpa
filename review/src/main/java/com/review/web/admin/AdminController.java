@@ -1,13 +1,8 @@
 package com.review.web.admin;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,48 +17,40 @@ public class AdminController {
 	@Autowired AdminService memberService;
 	
 	@PostMapping("/join")
-	public Messenger join(@RequestBody Admin member) {
-		int count = memberService.count();
-		memberService.join(member);
-		return (memberService.count()==count+1)? Messenger.SUCCESS:Messenger.FAIL;
+	public Messenger add(@RequestBody Admin member) {
+		int current = memberService.count();
+		String s = "";
+		memberService.add(member);
+		return (memberService.count() == (current+1))? Messenger.SUCCESS : Messenger.FAIL;
 	}
-	
 	@PostMapping("/login")
-	public Map<String, Object> login(@RequestBody Admin member) {
-		Map<String, Object> returnMap = new HashMap<>();
-		Admin joinedMember = memberService.login(member);
-		if(joinedMember!=null) {
-			returnMap.put("member", joinedMember);
-			returnMap.put("messenger", Messenger.SUCCESS);
-		}else {
-			returnMap.put("messenger", Messenger.FAIL);
-		}
-		return returnMap;
+	public Messenger login(@RequestBody Admin member) {
+		return (memberService.login(member))? Messenger.SUCCESS : Messenger.FAIL;
+	}
+	@GetMapping("/list")
+	public Admin[] list() {
+		Admin[] members = new Admin[5];
+		return members;
 	}
 	
-	@GetMapping("/memberList")
-	public List<Admin> memberList(){
-		return memberService.readFile();
+	@GetMapping("/detail")
+	public Admin detail(@RequestBody Admin member) {
+		Admin returnMember = new Admin();
+		return returnMember;
 	}
-	
-	@GetMapping("/detail/{userid}")
-	public Admin detail(@PathVariable String userid) {
-		return memberService.detail(userid);
+	@GetMapping("/count")
+	public int count() {
+		int count = 0;
+		return count;
 	}
-	
-	@PostMapping("/idchek")
-	public Messenger idchek(@RequestBody String userid) {
-		return (memberService.check(userid))? Messenger.FAIL:Messenger.SUCCESS ;
-	}
-	
 	@PutMapping("/update")
-	public Messenger update(@RequestBody Admin member) {
-		return (memberService.update(member))? Messenger.SUCCESS:Messenger.FAIL;
+	public Admin update(@RequestBody Admin member) {
+		Admin returnMember = new Admin();
+		return returnMember;
 	}
-	
 	@DeleteMapping("/delete")
-	public Messenger delete(@RequestBody Admin member) {
-		return (memberService.delete(member)) ? Messenger.SUCCESS:Messenger.FAIL;
+	public Admin delete(@RequestBody Admin member) {
+		Admin returnMember = new Admin();
+		return returnMember;
 	}
-	 
 }

@@ -1,27 +1,12 @@
 package com.review.web.admin;
 
-import java.util.List;
-
 public interface AdminService {
-
-	void join(Admin member);
-
-	int count();
-
-	public Admin login(Admin member);
-	
+	public void add(Admin member);
+	public Admin[] list(Admin member);
 	public Admin detail(String userid);
-
-	public boolean check(String userid);
-
-	boolean update(Admin member);
-
-	boolean delete(Admin member);
+	public int count();
+	public boolean login(Admin member);
+	public void update(Admin member);
+	public void delete(Admin member);
 	
-	public void saveFile(Admin member);
-	
-	public List<Admin> readFile();
-
-	List<String> list();
-
 }

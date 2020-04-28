@@ -21,8 +21,8 @@ import com.review.web.util.Messenger;
 public class UserController {
 	@Autowired UserService userService;
 	
-	@PostMapping("/signup")
-	public Messenger signup(@RequestBody User user) {
+	@PostMapping("/join")
+	public Messenger join(@RequestBody User user) {
 		int count = userService.count();
 		return (userService.count()==count+1)?Messenger.SUCCESS:Messenger.FAIL;
 	}
@@ -33,8 +33,8 @@ public class UserController {
 	}
 	
 	
-	@PostMapping("/signin")
-	public Map<String, Object> signin(@RequestBody User user) {
+	@PostMapping("/login")
+	public Map<String, Object> login(@RequestBody User user) {
 		Map<String, Object> returnMap = new HashMap<>();
 		User signinedUser = userService.login(user);
 		if(signinedUser != null) {
