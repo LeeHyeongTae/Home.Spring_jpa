@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>질병관리본부</title>
+<title>register page</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<style>
+<style type="text/css">
 html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 .border_black{border:1px solid black;}
 .center{margin: 0 auto}
@@ -17,7 +17,7 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	<td><img alt="" src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png"> </td>
 	<td id="searchBar">
 	<table>
-	<tr><td colspan="2"><input id="search"></td><td id="search_button" type="button">search</td></tr>
+	<tr><td colspan="2"><label>통합검색</label><input id="search"></td><td><input id="search_button" type="button" value="search"></td></tr>
 	</table>
 	<td>ranking</td>
 	<td>
@@ -45,7 +45,30 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	</td>
 	</tr>
 	
-	<tr id="main_menu"><td id="main_r" colspan="4"><img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg"></td></tr>
+	<tr id="main_menu"><td id="main_r" colspan="4">
+	<table id="register_main">
+	<tr>
+		<td rowspan="4"><img alt="" src="https://www.musiciansdfw.org/wp-content/uploads/2018/11/default-profile.jpg"><br>
+		<input id="profile_button" type="button" value="profile update"></td>
+		<td rowspan="4" colspan="3"><label>employNumber</label><br><input id="employNumber" type="text"><br>
+		<label>userid</label><br><input id="userid" type="text"><br>
+		<label>name</label><br><input id="name" type="text"><br>
+		<label>password</label><br><input id="password" type="text"><br>
+		<label>position</label><br><input id="position" type="text"><br>
+		<label>address</label><br><input id="address" type="text"><br>
+		<label>email</label><br><input id="email" type="text"><br>
+		<label>phoneNumber</label><br><input id="phoneNumber" type="text"><br>
+		<label>registerDate</label><br><input id="registerDate" type="text"></td>
+	</tr>
+	<tr></tr><tr></tr><tr></tr>
+	<tr>
+		<td colspan="4">
+		<input id="join_button" type="button" value="등록하기">
+		<input id="no_button" type="button" value="취소">
+		</td>
+	</tr>
+</table>
+	</td></tr>
 	
 	<tr id="bottom_menu">
 	<td><img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_05.jpg"><br>미세먼지 건강수칙</td>
@@ -56,6 +79,7 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 <footer>
 		<p>Footer</p>
 </footer>
+
 <script type="text/javascript">
 $('#first_page').css({width:'80%', height:'900px'}).addClass('border_black center')
 $('#first_page tr td').addClass('border_black')
@@ -66,6 +90,8 @@ $('#mid_menu').css({height: '50px'})
 $('#register_button').click( e=> {
 	location.href="admin/register.html"
 })
+$('#register_main').css({width:'60%', height:'100%'}).addClass('border_black center')
+$('#register_main tr td').addClass('border_black center')
 </script>
 </body>
 </html>
