@@ -22,9 +22,9 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	<td>ranking</td>
 	<td>
 		<input id="register_button" type="button" value="관리자 가입">
-		<input id="register_button" type="button" value="관리자 로그인">
-		<input id="register_button" type="button" value="사용자 가입">
-		<input id="register_button" type="button" value="관리자 로그인">
+		<input id="access_button" type="button" value="관리자 로그인">
+		<input id="userjoin_button" type="button" value="사용자 가입">
+		<input id="userlogin_button" type="button" value="사용자 로그인">
 	</td>
 	</tr>
 	
@@ -48,10 +48,14 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	<tr id="main_menu"><td id="main_r" colspan="4">
 	<table id="register_main">
 	<tr>
-		<td rowspan="4"><img alt="" src="https://www.musiciansdfw.org/wp-content/uploads/2018/11/default-profile.jpg"><br>
+		<td rowspan="4">
+		<label><h2>프로필 사진</h2></label>
+		<img alt="" src="https://www.musiciansdfw.org/wp-content/uploads/2018/11/default-profile.jpg"><br>
+		<input id="profile" type="text" value="사진"><br>
 		<input id="profile_button" type="button" value="profile update"></td>
-		<td rowspan="4" colspan="3"><label>employNumber</label><br><input id="employNumber" type="text"><br>
-		<label>userid</label><br><input id="userid" type="text"><br>
+		<td rowspan="4" colspan="3">
+		<label>employNumber</label><br><input id="employNumber" type="text"><br>
+		<label>userid</label><br><input id="userid" type="text"><input id="idCheck" type="text"><br>
 		<label>name</label><br><input id="name" type="text"><br>
 		<label>password</label><br><input id="password" type="text"><br>
 		<label>position</label><br><input id="position" type="text"><br>
@@ -63,8 +67,8 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	<tr></tr><tr></tr><tr></tr>
 	<tr>
 		<td colspan="4">
-		<input id="join_button" type="button" value="등록하기">
-		<input id="no_button" type="button" value="취소">
+		<input id="adminjoin_button" type="button" value="관리자 등록하기">
+		<input id="cancel_button" type="button" value="등록 취소">
 		</td>
 	</tr>
 </table>
@@ -92,6 +96,58 @@ $('#register_button').click( e=> {
 })
 $('#register_main').css({width:'60%', height:'100%'}).addClass('border_black center')
 $('#register_main tr td').addClass('border_black center')
+
+$('#register_button').click( e=> {
+	location.href="register.html"
+})
+$('#access_button').click( e=> {
+	location.href="access.html"
+})
+$('#userjoin_button').click( e=> {
+	location.href="../user/join.html"
+})
+$('#userlogin_button').click( e=> {
+	location.href="../user/login.html"
+})
+$('#adminjoin_button').click( e=> {
+	$.ajax({
+		url:'/admin/join',
+		type:'post',
+		data:JSON.stringify({
+			employNumber:$('#employNumber').val(),
+			userid:$('#userid').val(),
+			name:$('#name').val(),
+			password:$('#password').val(),
+			position:$('#position').val(),
+			address:$('#address').val(),
+			proflie:$('#proflie').val(),
+			email:$('#email').val(),
+			phoneNumber:$('#phoneNumber').val(),
+			registerDate:$('#registerDate').val()
+		}),
+		dataType:'json',
+		contentType:'application/json',
+		success: d => {
+			if(d === "SUCCESS"){
+				location.href="access.html"
+			}
+		},
+		error: (req, x, error) => {
+			alert(req.status)
+		}
+	})
+})
+$('#userid').keyup( e => {
+	if($('#userid').val() != ''){
+		$.getJSON('/admin/idCheck/'+$('#userid').val(), d=> {
+			$('#idCheck').val(d)
+		})
+	}
+})
+$('#cancel_button').click( e=> {
+	location.href="../index.html"
+})
+
 </script>
 </body>
 </html>
