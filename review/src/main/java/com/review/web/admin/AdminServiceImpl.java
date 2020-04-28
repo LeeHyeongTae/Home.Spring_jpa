@@ -15,15 +15,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminServiceImpl implements AdminService{
 	private Map<String, Object> map;
-	public final static String FILE_PATH= "/Volumes/Macintosh HD/Spring-workspace/review/src/main/resources/static/member/";
+	public final static String FILE_PATH= "/Volumes/Macintosh HD/Spring-workspace/review/src/main/resources/static/admin/";
 	
 	public AdminServiceImpl() {
 		map = new HashMap<>();
 	}
 
 	@Override
-	public void join(Admin member) {
-		map.put(member.getUserid(), member);
+	public void join(Admin admin) {
+		map.put(admin.getUserid(), admin);
 	}
 
 	@Override
@@ -32,15 +32,15 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public Admin login(Admin member) {
-		Admin returnMember = null;
-		if(map.containsKey(member.getUserid())) {
-			Admin m = detail(member.getUserid());
-			if(member.getPassword().equals(m.getPassword())) {
-				returnMember = m;
+	public Admin login(Admin admin) {
+		Admin returnadmin = null;
+		if(map.containsKey(admin.getUserid())) {
+			Admin m = detail(admin.getUserid());
+			if(admin.getPassword().equals(m.getPassword())) {
+				returnadmin = m;
 			}
 		}
-		return returnMember;
+		return returnadmin;
 	}
 
 	@Override
@@ -54,30 +54,30 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public boolean update(Admin member) {
-		map.replace(member.getUserid(), member);
+	public boolean update(Admin admin) {
+		map.replace(admin.getUserid(), admin);
 		return true;
 	}
 
 	@Override
-	public boolean delete(Admin member) {
-		map.remove(member.userid);
+	public boolean delete(Admin admin) {
+		map.remove(admin.userid);
 		return true;
 	}
 
 	@Override
 	public List<String> list() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
-	public void saveFile(Admin member) {
+	public void saveFile(Admin admin) {
 		try {
 			File file = new File(FILE_PATH+"list.txt");
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-			writer.write(member.toString());
+			writer.write(admin.toString());
 			writer.newLine();
 			writer.flush();
 			
@@ -88,7 +88,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<Admin> readFile() {
-		List<Admin> memberList = new ArrayList<>();
+		List<Admin> adminList = new ArrayList<>();
 		List<String> list = new ArrayList<>(); 
 		try {
 			File file = new File(FILE_PATH+"list.txt");
@@ -110,8 +110,8 @@ public class AdminServiceImpl implements AdminService{
 			m.setPassword(arr[2]);
 			m.setSsn(arr[3]);
 			m.setAddress(arr[4]);
-			memberList.add(m);
+			adminList.add(m);
 		}
-		return memberList;
+		return adminList;
 	}
 }

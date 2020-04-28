@@ -17,23 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.review.web.util.Messenger;
 
 @RestController
-@RequestMapping("/member")
+@RequestMapping("/admin")
 public class AdminController {
-	@Autowired AdminService memberService;
+	@Autowired AdminService adminService;
 	
 	@PostMapping("/join")
-	public Messenger join(@RequestBody Admin member) {
-		int count = memberService.count();
-		memberService.join(member);
-		return (memberService.count()==count+1)? Messenger.SUCCESS:Messenger.FAIL;
+	public Messenger join(@RequestBody Admin admin) {
+		int count = adminService.count();
+		adminService.join(admin);
+		return (adminService.count()==count+1)? Messenger.SUCCESS:Messenger.FAIL;
 	}
 	
 	@PostMapping("/login")
-	public Map<String, Object> login(@RequestBody Admin member) {
+	public Map<String, Object> login(@RequestBody Admin admin) {
 		Map<String, Object> returnMap = new HashMap<>();
-		Admin joinedMember = memberService.login(member);
-		if(joinedMember!=null) {
-			returnMap.put("member", joinedMember);
+		Admin joinedadmin = adminService.login(admin);
+		if(joinedadmin!=null) {
+			returnMap.put("admin", joinedadmin);
 			returnMap.put("messenger", Messenger.SUCCESS);
 		}else {
 			returnMap.put("messenger", Messenger.FAIL);
@@ -41,29 +41,29 @@ public class AdminController {
 		return returnMap;
 	}
 	
-	@GetMapping("/memberList")
-	public List<Admin> memberList(){
-		return memberService.readFile();
+	@GetMapping("/adminList")
+	public List<Admin> adminList(){
+		return adminService.readFile();
 	}
 	
 	@GetMapping("/detail/{userid}")
 	public Admin detail(@PathVariable String userid) {
-		return memberService.detail(userid);
+		return adminService.detail(userid);
 	}
 	
 	@PostMapping("/idchek")
 	public Messenger idchek(@RequestBody String userid) {
-		return (memberService.check(userid))? Messenger.FAIL:Messenger.SUCCESS ;
+		return (adminService.check(userid))? Messenger.FAIL:Messenger.SUCCESS ;
 	}
 	
 	@PutMapping("/update")
-	public Messenger update(@RequestBody Admin member) {
-		return (memberService.update(member))? Messenger.SUCCESS:Messenger.FAIL;
+	public Messenger update(@RequestBody Admin admin) {
+		return (adminService.update(admin))? Messenger.SUCCESS:Messenger.FAIL;
 	}
 	
 	@DeleteMapping("/delete")
-	public Messenger delete(@RequestBody Admin member) {
-		return (memberService.delete(member)) ? Messenger.SUCCESS:Messenger.FAIL;
+	public Messenger delete(@RequestBody Admin admin) {
+		return (adminService.delete(admin)) ? Messenger.SUCCESS:Messenger.FAIL;
 	}
 	 
 }

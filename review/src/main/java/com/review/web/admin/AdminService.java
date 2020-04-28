@@ -4,21 +4,21 @@ import java.util.List;
 
 public interface AdminService {
 
-	void join(Admin member);
+	void join(Admin admin);
 
 	int count();
 
-	public Admin login(Admin member);
+	public Admin login(Admin admin);
 	
 	public Admin detail(String userid);
 
 	public boolean check(String userid);
 
-	boolean update(Admin member);
+	boolean update(Admin admin);
 
-	boolean delete(Admin member);
+	boolean delete(Admin admin);
 	
-	public void saveFile(Admin member);
+	public void saveFile(Admin admin);
 	
 	public List<Admin> readFile();
 
