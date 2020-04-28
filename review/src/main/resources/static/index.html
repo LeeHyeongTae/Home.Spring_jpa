@@ -90,7 +90,6 @@ footer {
 				<label>ID </label> <br> <input id="userid" type="text" /> <br>
 				<label>PASSWORD</label><br> <input id="password" type="text" /><br>
 				<input id="login-button" type="button" value="user list 로그인">
-				<input id="adminLogin-button" type="button" value="admin list 로그인"><br>
 				<input id="cancel-button" type="button" value="취소">
 
 			</form>
@@ -148,31 +147,8 @@ $('#login-button').click(e =>{
 		}
 	})
 })
-$('#adminLogin-button').click(e =>{
-	e.preventDefault()
-	$.ajax({
-		url: '/admin/login',
-		type: 'post',
-		data: JSON.stringify(
-				{userid: $('#userid').val(),
-				 password: $('#password').val()}),
-		dataType: 'json',
-		contentType: 'application/json',
-		success : d => {
-			if(d.messenger === 'SUCCESS'){
-				location.href = "admin/List.html"
-			}else{
-				alert('다시 로그인 해주세요')
-				location.href = "index.html"
-			}
-		},
-		error: (request,status,error)=>{
-			alert("code:"+request.status)
-		}
-	})
-})
-$('#cancel-button').click(function(){
-	
+$('#cancel-button').click( e => {
+	location.href="index.html"
 })
 </script>
 </body>

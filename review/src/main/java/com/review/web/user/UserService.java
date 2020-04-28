@@ -1,5 +1,6 @@
 package com.review.web.user;
 
+import java.util.List;
 
 public interface UserService {
 
@@ -13,5 +14,7 @@ public interface UserService {
 	public boolean update(User user);
 
 	public boolean remove(String userid);
+
+	public List<User> list();
 
 }
