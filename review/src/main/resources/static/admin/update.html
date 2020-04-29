@@ -63,7 +63,7 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	<tr></tr><tr></tr><tr></tr>
 	<tr>
 		<td colspan="4">
-		<input id="admin_register_button" type="button" value="등록하기">
+		<input id="admin_update_button" type="button" value="등록하기">
 		<input id="no_button" type="button" value="취소">
 		</td>
 	</tr>
@@ -95,11 +95,11 @@ $('#register_main tr td').addClass('border_black center')
 
 /*employNumber, userid, name, password, 
 	position, address, profile, email, phoneNumber, registerDate*/
-$('#admin_register_button').click( e=>{
+$('#admin_update_button').click( e=>{
 	e.preventDefault()
 	$.ajax({
-		url:'/admins/register',
-		type:'post',
+		url:'/admins/'+'1234', //restful 방식으로 cording.
+		type:'put',
 		data:JSON.stringify({
 			name:$('#name').val(),
 			position:$('#position').val(),
@@ -109,7 +109,7 @@ $('#admin_register_button').click( e=>{
 		dataType:'json',
 		contentType:'application/json',
 		success: d=> {
-			
+			location.href='access.html'
 		},
 		error: (req, x, error) => {
 			alert(req.status)

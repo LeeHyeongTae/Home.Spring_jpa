@@ -95,26 +95,8 @@ $('#register_main tr td').addClass('border_black center')
 
 /*employNumber, userid, name, password, 
 	position, address, profile, email, phoneNumber, registerDate*/
-$('#admin_register_button').click( e=>{
-	e.preventDefault()
-	$.ajax({
-		url:'/admins/register',
-		type:'post',
-		data:JSON.stringify({
-			name:$('#name').val(),
-			position:$('#position').val(),
-			email:$('#email').val(),
-			phoneNumber:$('#phoneNumber').val()
-		}),
-		dataType:'json',
-		contentType:'application/json',
-		success: d=> {
-			
-		},
-		error: (req, x, error) => {
-			alert(req.status)
-		}
-	})
+$.getJSON('/admins/'+'1234', d => {
+	
 })
 </script>
 </body>
