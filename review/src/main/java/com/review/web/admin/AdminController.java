@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,12 +21,12 @@ public class AdminController {
 	
 	@PostMapping("")
 	public Messenger register(Admin admin) {
+		System.out.println("1"+admin);
 		adminService.register(admin);
-		return null;
+		return Messenger.SUCCESS;
 	}
 	@GetMapping("")
 	public List<Admin> list(){
-		
 		return adminService.findAll();
 	}
 	
@@ -35,7 +36,7 @@ public class AdminController {
 	}
 	
 	@PutMapping("{employNumber}")
-	public Messenger update(@PathVariable Admin admin) {
+	public Messenger update(@RequestBody Admin admin) {
 		adminService.modify(admin);
 		return Messenger.SUCCESS;
 	}

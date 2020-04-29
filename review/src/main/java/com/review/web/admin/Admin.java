@@ -10,6 +10,7 @@ public class Admin {
 	
 	@Override
 	public String toString() {
-		return String.format("%s,%s,%s,%s,%s", userid,name,password,address);
+		return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", 
+				employNumber,userid,name,password,position,address,profile,email,phoneNumber,registerDate);
 	}
 }

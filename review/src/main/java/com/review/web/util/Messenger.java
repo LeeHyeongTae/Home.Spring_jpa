@@ -1,5 +1,5 @@
 package com.review.web.util;
 
 public enum Messenger {
-	SUCCESS, FAIL, 일등, 이등, 삼등, 사등, 오등, ;
+	SUCCESS, FAIL, FILE_INSERT_ERROR, FILE_READ_ERROR ;
 }
