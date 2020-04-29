@@ -10,18 +10,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.review.web.util.Data;
+import com.review.web.util.Messenger;
+
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class AdminServiceImpl implements AdminService{
+	private static final String ADMIN_PATH = "/Users/ihyeongtae/git/repository2/review/src/main/resources/static/admin/";
 	private Map<String, Object> map = new HashMap<>();
-	private static final String ADMINFILE_PATH = "/Users/ihyeongtae/git/repository2/review/src/main/resources/static/admin/";
 
 	@Override
 	public void saveFile(Admin admin) {
-		File file = new File(ADMINFILE_PATH+Data.LIST+Data.CSV);
+		File file = new File(ADMIN_PATH+"list.csv");
 		try {
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -29,7 +30,7 @@ public class AdminServiceImpl implements AdminService{
 			writer.newLine();
 			writer.flush();
 		} catch (Exception e) {
-			System.out.println("save error");
+			System.out.println(Messenger.FILE_SAVE_ERROR);
 		}
 	}
 
@@ -37,7 +38,7 @@ public class AdminServiceImpl implements AdminService{
 	public List<Admin> readFile() {
 		List<Admin> AdminList = new ArrayList<>();
 		List<String> list = new ArrayList<>();
-		File file = new File(ADMINFILE_PATH+Data.LIST+Data.CSV);
+		File file = new File(ADMIN_PATH+"list.csv");
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String message ="";
@@ -46,7 +47,7 @@ public class AdminServiceImpl implements AdminService{
 			}
 			reader.close();
 		} catch (Exception e) {
-			System.out.println("read error");
+			System.out.println(Messenger.FILE_READ_ERROR);
 		}
 		Admin a = null;
 		for(int i=0; i<list.size(); i++) {

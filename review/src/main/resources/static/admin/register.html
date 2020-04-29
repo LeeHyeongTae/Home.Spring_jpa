@@ -110,6 +110,7 @@ $('#userlogin_button').click( e=> {
 	location.href="../user/login.html"
 })
 $('#adminjoin_button').click( e=> {
+	e.preventDefault()
 	$.ajax({
 		url:'/admin/join',
 		type:'post',
@@ -120,7 +121,7 @@ $('#adminjoin_button').click( e=> {
 			password:$('#password').val(),
 			position:$('#position').val(),
 			address:$('#address').val(),
-			proflie:$('#proflie').val(),
+			profile:$('#profile').val(),
 			email:$('#email').val(),
 			phoneNumber:$('#phoneNumber').val(),
 			registerDate:$('#registerDate').val()
