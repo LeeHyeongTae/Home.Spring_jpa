@@ -12,8 +12,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminServiceImpl implements AdminService{
 	@Autowired AdminDao adminDao;
+	
 	@Override
-	public boolean register(Admin admin) {
+	public void register(Admin admin) {
 		System.out.println("2"+admin);
 		//employNumber(4자리수 랜덤), userid, name, password, 
 		//position, address, profile, email, phoneNumber, registerDate(현재날짜)
@@ -21,7 +22,6 @@ public class AdminServiceImpl implements AdminService{
 		admin.setPassword("1");
 		admin.setRegisterDate(createCurrentDate());
 		adminDao.insert(admin);
-		return false;
 	}
 
 	private String createCurrentDate() {

@@ -19,8 +19,8 @@ import com.review.web.util.Messenger;
 public class AdminController {
 	@Autowired AdminService adminService;
 	
-	@PostMapping("")
-	public Messenger register(Admin admin) {
+	@PostMapping("/register")
+	public Messenger register(@RequestBody Admin admin) {
 		System.out.println("1"+admin);
 		adminService.register(admin);
 		return Messenger.SUCCESS;

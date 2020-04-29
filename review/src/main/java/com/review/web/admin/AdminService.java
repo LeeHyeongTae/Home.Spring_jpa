@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface AdminService {
 	
-	public boolean register(Admin admin);
+	public void register(Admin admin);
 	
 	public List<Admin> findAll();
 	
