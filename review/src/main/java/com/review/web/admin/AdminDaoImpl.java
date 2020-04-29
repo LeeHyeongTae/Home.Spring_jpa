@@ -14,7 +14,6 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public void insert(Admin admin) {
-		System.out.println("3"+admin);
 		try {
 			@SuppressWarnings("resource")
 			BufferedWriter writer =  new BufferedWriter(

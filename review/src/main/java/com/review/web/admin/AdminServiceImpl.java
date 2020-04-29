@@ -15,7 +15,6 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public void register(Admin admin) {
-		System.out.println("2"+admin);
 		//employNumber(4자리수 랜덤), userid, name, password, 
 		//position, address, profile, email, phoneNumber, registerDate(현재날짜)
 		admin.setEmployNumber(createEmployNumber());
