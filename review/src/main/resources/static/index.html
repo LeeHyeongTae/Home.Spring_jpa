@@ -22,9 +22,9 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	<td>ranking</td>
 	<td>
 		<input id="register_button" type="button" value="관리자 가입">
-		<input id="register_button" type="button" value="관리자 로그인">
-		<input id="register_button" type="button" value="사용자 가입">
-		<input id="register_button" type="button" value="관리자 로그인">
+		<input id="access_button" type="button" value="관리자 로그인">
+		<input id="userjoin_button" type="button" value="사용자 가입">
+		<input id="userlogin_button" type="button" value="사용자 로그인">
 	</td>
 	</tr>
 	
@@ -65,6 +65,15 @@ $('#mid_menu').css({height: '50px'})
 
 $('#register_button').click( e=> {
 	location.href="admin/register.html"
+})
+$('#access_button').click( e=> {
+	location.href="admin/access.html"
+})
+$('#userjoin_button').click( e=> {
+	location.href="user/join.html"
+})
+$('#userlogin_button').click( e=> {
+	location.href="user/login.html"
 })
 </script>
 </body>
