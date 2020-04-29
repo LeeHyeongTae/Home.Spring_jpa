@@ -112,7 +112,7 @@ $('#userlogin_button').click( e=> {
 $('#adminjoin_button').click( e=> {
 	e.preventDefault()
 	$.ajax({
-		url:'/admin/join',
+		url:'/admins/join',
 		type:'post',
 		data:JSON.stringify({
 			employNumber:$('#employNumber').val(),
