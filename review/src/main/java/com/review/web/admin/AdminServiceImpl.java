@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import com.review.web.util.Data;
 import org.springframework.stereotype.Service;
 
 
@@ -21,7 +21,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public void saveFile(Admin admin) {
-		File file = new File(ADMINFILE_PATH+"adminList.txt");
+		File file = new File(ADMINFILE_PATH+Data.LIST+Data.CSV);
 		try {
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -37,7 +37,7 @@ public class AdminServiceImpl implements AdminService{
 	public List<Admin> readFile() {
 		List<Admin> AdminList = new ArrayList<>();
 		List<String> list = new ArrayList<>();
-		File file = new File(ADMINFILE_PATH+"adminList.txt");
+		File file = new File(ADMINFILE_PATH+Data.LIST+Data.CSV);
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String message ="";
