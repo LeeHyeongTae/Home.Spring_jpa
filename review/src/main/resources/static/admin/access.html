@@ -104,7 +104,7 @@ $('#userlogin_button').click( e=> {
 })
 $('#adminjoin_button').click( e=> {
 	$.ajax({
-		url:'/admin/login',
+		url:'/admins/login',
 		type:'post',
 		data:JSON.stringify({
 			userid:$('#userid').val(),
