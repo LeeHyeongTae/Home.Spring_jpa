@@ -72,7 +72,7 @@ public class AdminDaoImpl implements AdminDao{
 	public Admin selectOne(String employNumber) {
 		Admin admin = new Admin();
 		try {
-			selectAll().contains(o);
+			//selectAll().contains(o);
 		} catch(Exception e) {
 			
 		}

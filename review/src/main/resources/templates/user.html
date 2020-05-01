@@ -2,14 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>access page</title>
+<title>질병관리본부</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<style type="text/css">
-html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
-.border_black{border:1px solid black;}
-.center{margin: 0 auto}
-.width_full{width:'100%';height:'100%'}
-</style>
+<link rel="stylesheet" href="/sss/global.css"> 
 </head>
 <body>
 <table id="first_page"> 
@@ -17,7 +12,7 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	<td><img alt="" src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png"> </td>
 	<td id="searchBar">
 	<table>
-	<tr><td colspan="2"><label>통합검색</label><input id="search"></td><td><input id="search_button" type="button" value="search"></td></tr>
+	<tr><td colspan="2"><input id="search"></td><td><input id="search_button" type="button" value="search"></td></tr>
 	</table>
 	<td>ranking</td>
 	<td>
@@ -45,27 +40,7 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 	</td>
 	</tr>
 	
-	<tr id="main_menu"><td id="main_r" colspan="4">
-	<table id="register_main">
-	<tr>
-		<td rowspan="4">
-		<label><h2>관리자 로그인</h2></label>
-		<img alt="" src=""><br>
-		</td>
-		<td rowspan="4" colspan="3">
-		<label>employNumber</label><br><input id="employNumber" type="text"><br>
-		<label>password</label><br><input id="password" type="text"><br>
-		</td>
-	</tr>
-	<tr></tr><tr></tr><tr></tr>
-	<tr>
-		<td colspan="4">
-		<input id="adminjoin_button" type="button" value="관리자 로그인하기">
-		<input id="cancel_button" type="button" value="등록 취소">
-		</td>
-	</tr>
-</table>
-	</td></tr>
+	<tr id="main_menu"><td id="main_r" colspan="4"><img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg"></td></tr>
 	
 	<tr id="bottom_menu">
 	<td><img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_05.jpg"><br>미세먼지 건강수칙</td>
@@ -76,7 +51,6 @@ html, body{width: 100%; height:100%;overflow:hidden; min-height: 100%;}
 <footer>
 		<p>Footer</p>
 </footer>
-
 <script type="text/javascript">
 $('#first_page').css({width:'80%', height:'900px'}).addClass('border_black center')
 $('#first_page tr td').addClass('border_black')
@@ -85,47 +59,20 @@ $('#inner_menu').css({width:'100%'})
 $('#mid_menu').css({height: '50px'})
 
 $('#register_button').click( e=> {
+	e.preventDefault()
 	location.href="admin/register.html"
 })
-$('#register_main').css({width:'60%', height:'100%'}).addClass('border_black center')
-$('#register_main tr td').addClass('border_black center')
-
-$('#register_button').click( e=> {
-	location.href="register.html"
-})
 $('#access_button').click( e=> {
-	location.href="access.html"
-})
+	$.ajax({
+		
+	})
+	})
 $('#userjoin_button').click( e=> {
-	location.href="../user/join.html"
+	location.href="user/join.html"
 })
 $('#userlogin_button').click( e=> {
-	location.href="../user/login.html"
+	location.href="user/login.html"
 })
-$('#adminjoin_button').click( e=> {
-	$.ajax({
-		url:'/admins/login',
-		type:'post',
-		data:JSON.stringify({
-			userid:$('#userid').val(),
-			password:$('#password').val()
-		}),
-		dataType:'json',
-		contentType:'application/json',
-		success: d => {
-			if(d === "SUCCESS"){
-				location.href="adminPage.html"
-			}
-		},
-		error: (req, x, error) => {
-			alert(req.status)
-		}
-	})
-})
-$('#cancel_button').click( e=> {
-	location.href="../index.html"
-})
-
 </script>
 </body>
 </html>
