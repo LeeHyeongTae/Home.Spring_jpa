@@ -2,6 +2,9 @@ package com.review.web.admin;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface AdminService {
 	
 	public void register(Admin admin);
@@ -13,4 +16,6 @@ public interface AdminService {
 	public boolean modify(Admin admin);
 	
 	public boolean remove(Admin admin);
+
+	public void login(Admin admin);
 }

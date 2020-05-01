@@ -64,11 +64,14 @@ $('#inner_menu').css({width:'100%'})
 $('#mid_menu').css({height: '50px'})
 
 $('#register_button').click( e=> {
+	e.preventDefault()
 	location.href="admin/register.html"
 })
 $('#access_button').click( e=> {
-	location.href="admin/access.html"
-})
+	$.ajax({
+		
+	})
+	})
 $('#userjoin_button').click( e=> {
 	location.href="user/join.html"
 })

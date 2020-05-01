@@ -38,14 +38,13 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<Admin> findAll() {
-		adminDao.selectAll();
-		return null;
+		
+		return adminDao.selectAll();
 	}
 
 	@Override
 	public Admin findOne(String employNumber) {
-		adminDao.selectOne(employNumber);
-		return null;
+		return adminDao.selectOne(employNumber);
 	}
 
 	@Override
@@ -58,6 +57,12 @@ public class AdminServiceImpl implements AdminService{
 	public boolean remove(Admin admin) {
 		adminDao.delete(admin);
 		return false;
+	}
+
+	@Override
+	public void login(Admin admin) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

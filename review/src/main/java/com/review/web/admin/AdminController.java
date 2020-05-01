@@ -18,10 +18,17 @@ import com.review.web.util.Messenger;
 @RequestMapping("/admins")
 public class AdminController {
 	@Autowired AdminService adminService;
+	@Autowired AdminDao adminDao;
 	
 	@PostMapping("/register")
 	public Messenger register(@RequestBody Admin admin) {
 		adminService.register(admin);
+		return Messenger.SUCCESS;
+	}
+	
+	@PostMapping("/login")
+	public Messenger login(@RequestBody Admin admin) {
+		adminService.login(admin);
 		return Messenger.SUCCESS;
 	}
 	@GetMapping("")
