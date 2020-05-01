@@ -5,6 +5,7 @@
 <title>사용자 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/resources/css/global.css"> 
+<script type="text/javascript" src="/resources/js/user.js"></script>
 </head>
 <body>
 <table id="first_page"> 
@@ -51,7 +52,8 @@
 <footer>
 		<p>Footer</p>
 </footer>
-<script type="text/javascript">
+<script>
+user.init()
 $('#first_page').css({width:'80%', height:'900px'}).addClass('border_black center')
 $('#first_page tr td').addClass('border_black')
 $('#top_menu').css({height:'80px'})
