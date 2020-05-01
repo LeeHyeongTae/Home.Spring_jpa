@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.review.web.util.Messenger;
-
+//di commit
 @RestController
 @RequestMapping("/admins")
 public class AdminController {
