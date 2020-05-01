@@ -1,18 +1,35 @@
-"user strict"
-var user = user || {} 
-	//M m = null
+"use strict"
+var user = user || {}
 user = (() => {
 	let init = () => {
 		alert('1')
 		onCreate()
 	}
-	
 	let onCreate = () => {
-	alert('2')
-	setContentView()
+		
+		$('#register_button').click( e=> {
+			e.preventDefault()
+			location.href="/admin"
+		})
+		$('#access_button').click( e=> {
+			$.ajax({
+				
+			})
+			})
+		$('#userjoin_button').click( e=> {
+			location.href="user/join.html"
+		})
+		$('#userlogin_button').click( e=> {
+			location.href="user/login.html"
+		})
+		setContentView()
 	}
 	let setContentView = () => {
-		alert('3')
+		$('#first_page').css({width:'80%', height:'900px'}).addClass('border_black center')
+		$('#first_page tr td').addClass('border_black')
+		$('#top_menu').css({height:'80px'})
+		$('#inner_menu').css({width:'100%'})
+		$('#mid_menu').css({height: '50px'})
 	}
-	return {setContentView}
+	return {init}
 })()
