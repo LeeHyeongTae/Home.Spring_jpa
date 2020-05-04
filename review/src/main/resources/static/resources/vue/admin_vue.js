@@ -1,6 +1,6 @@
 "use strict"
 var adminVue2 = {
-	join:() => {
+	join:() => {/dd
 	return `<table id="register_main">
 	<tr>
 	<td rowspan="4"><img alt="" src="https://www.musiciansdfw.org/wp-content/uploads/2018/11/default-profile.jpg"><br>
