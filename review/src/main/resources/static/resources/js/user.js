@@ -2,7 +2,6 @@
 var user = user || {}
 user = (() => {
 	let init = () => {
-		alert('1')
 		onCreate()
 	}
 	let onCreate = () => {
