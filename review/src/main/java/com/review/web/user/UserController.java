@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.review.web.util.Messenger;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired UserService userService;
 	
-	@PostMapping("/join")
+	@PostMapping("")
 	public Messenger join(User user) {
 		userService.add(user);
 		return Messenger.SUCCESS;
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("")
 	public List<User> list(){
 		return userService.findAll();
 	}
