@@ -1,15 +1,17 @@
 package com.review.web.user;
 
+import java.util.List;
+
 public interface UserDao {
 
-	public void insert(User user);
+	boolean insert(User user);
 
-	public void selectAll();
+	List<User> selectAll();
 
-	public void selectOne(String userid);
+	User selectOne(String userid);
 
-	public void update(User user);
+	boolean update(User user);
 
-	public void delete(User user);
+	boolean delete(User user);
 
 }

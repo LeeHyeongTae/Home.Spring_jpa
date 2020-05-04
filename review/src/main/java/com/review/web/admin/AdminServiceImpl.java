@@ -60,9 +60,17 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void login(Admin admin) {
-		// TODO Auto-generated method stub
-		
+	public boolean login(Admin admin) {
+		List<Admin> adminList = adminDao.selectAll();
+		boolean login = false;
+		for(int i=0; i<adminList.size(); i++) {
+			if(admin.getUserid().equals(adminList.get(i).getUserid()) &&
+					admin.getPassword().equals(adminList.get(i).getPassword())) {
+				login = true;
+				break;
+			}
+		}
+		return login;
 	}
 
 }

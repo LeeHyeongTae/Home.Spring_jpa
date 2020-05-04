@@ -12,32 +12,27 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public boolean add(User user) {
-		userDao.insert(user);
-		return false;
+		return userDao.insert(user);
 	}
 
 	@Override
 	public List<User> findAll() {
-		userDao.selectAll();
-		return null;
+		return userDao.selectAll();
 	}
 
 	@Override
 	public User findOne(String userid) {
-		userDao.selectOne(userid);
-		return null;
+		return userDao.selectOne(userid);
 	}
 
 	@Override
 	public boolean modify(User user) {
-		userDao.update(user);
-		return false;
+		return userDao.update(user);
 	}
 
 	@Override
 	public boolean remove(User user) {
-		userDao.delete(user);
-		return false;
+		return userDao.delete(user);
 	}
 
 	

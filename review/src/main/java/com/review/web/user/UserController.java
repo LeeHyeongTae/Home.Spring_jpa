@@ -19,13 +19,13 @@ import com.review.web.util.Messenger;
 public class UserController {
 	@Autowired UserService userService;
 	
-	@PostMapping("")
+	@PostMapping("/join")
 	public Messenger join(User user) {
 		userService.add(user);
 		return Messenger.SUCCESS;
 	}
 	
-	@GetMapping("")
+	@GetMapping("/list")
 	public List<User> list(){
 		return userService.findAll();
 	}

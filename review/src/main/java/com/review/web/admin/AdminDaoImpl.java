@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AdminDaoImpl implements AdminDao{
 
-	private static final String ADMIN_PATH = "/Users/ihyeongtae/git/repository2/review/src/main/resources/static/admin/";
+	private static final String ADMIN_PATH = "C:\\Users\\bit3\\git\\Home.Spring_jpa\\review\\src\\main\\resources\\static\\resources\\file\\";
 
 	@Override
 	public void insert(Admin admin) {
@@ -22,7 +22,7 @@ public class AdminDaoImpl implements AdminDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer =  new BufferedWriter(
 									 new FileWriter(
-									 new File(ADMIN_PATH+"list.csv")));
+									 new File(ADMIN_PATH+"adminList.csv")));
 			writer.write(admin.toString());
 			writer.newLine();
 			writer.flush();
@@ -38,7 +38,7 @@ public class AdminDaoImpl implements AdminDao{
 		try {
 			BufferedReader reader = new BufferedReader(
 									new FileReader(
-									new File(ADMIN_PATH+"list.csv")));
+									new File(ADMIN_PATH+"adminList.csv")));
 			String admin = "";
 			while((admin = reader.readLine()) != null) {
 				list.add(admin);

@@ -6,6 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/resources/css/global.css"> 
 <script type="text/javascript" src="/resources/js/user.js"></script>
+<script type="text/javascript" src="/resources/vue/admin_vue.js"></script>
 </head>
 <body>
 <table id="first_page"> 
@@ -13,7 +14,8 @@
 	<td><img alt="" src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png"> </td>
 	<td id="searchBar">
 	<table>
-	<tr><td colspan="2"><input id="search"></td><td><input id="search_button" type="button" value="search"></td></tr>
+	<tr><td colspan="2"><label>통합검색</label><input id="search"></td>
+	<td><input id="search_button" type="button" value="search"></td></tr>
 	</table>
 	<td>ranking</td>
 	<td>
@@ -25,7 +27,7 @@
 	</tr>
 	
 	<tr id="mid_menu">
-	<td id="mid_r" colspan="4">
+	<td id="main" colspan="4">
 	<table id="inner_menu">
 	<tr id="inner_menu_r">
 	<td ><input id="inner_1" type="button" value="감염병"></td>
@@ -41,7 +43,10 @@
 	</td>
 	</tr>
 	
-	<tr id="main_menu"><td id="main_r" colspan="4"><img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg"></td></tr>
+	<tr id="main_menu"><td id="main_r" colspan="4">
+	<img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg">
+	</td>
+	</tr>
 	
 	<tr id="bottom_menu">
 	<td><img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_05.jpg"><br>미세먼지 건강수칙</td>
@@ -49,9 +54,6 @@
 	<td><img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_10.jpg"><br>인플루엔자</td>
 	<td><img alt="" src="http://www.cdc.go.kr/cdc/img/main/visual_default_08.jpg"><br>액상형 전자담배 관련 폐손상</td></tr>
 </table>
-<footer>
-		<p>Footer</p>
-</footer>
 <script>
 user.init()
 </script>

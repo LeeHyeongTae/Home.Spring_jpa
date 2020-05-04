@@ -1,29 +1,105 @@
 "use strict"
 var user = user || {}
 user = (() => {
+	const WHEN_ERROR = `호출하는 JS 파일 찾지 못함`
+	let admin_vue
 	let init = () => {
-		alert('1')
+		
+		admin_vue = `/resources/vue/admin_vue.js`		
 		onCreate()
 	}
 	let onCreate = () => {
+		$.when(
+			$.getScript(admin_vue)
+		).done( ()=> {
+			setContentView()
+			$('#register_button')
+			.click( e=> {
+				e.preventDefault()
+			$('#main_r').empty()
+			$('#main_r').html(adminVue2.join())
+			$(`<input type="button"/>`)
+			.attr({value:'등록'})
+			.css({width: '200px', height: '100px', 'font-size': '30px'})
+			.appendTo('#join_box')
+			.click( e=> {
+				e.preventDefault()
+				$.ajax({
+					url:'/admins/register',
+					type:'post',
+					data: JSON.stringify({
+						name:$('#name').val(),
+						position:$('#position').val(),
+						email:$('#email').val(),
+						phoneNumber:$('#phoneNumber').val()
+					}),
+					dataType:'json',
+					contentType:'application/json',
+					success: d => {
+						if(d === 'SUCCESS'){							
+							
+						}
+					},
+					error: (req, x, error) => {
+						alert(req.status)
+					}
+				})
+			})
+			$(`<input type="button"/>`)
+			.attr({value:'취소'})
+			.css({width: '200px', height: '100px', 'font-size': '30px'})
+			.appendTo('#join_box')
+			.click( e=> {
+				e.preventDefault()
+				alert('취소버튼 클릭')
+				})
+			})
 		
-		$('#register_button').click( e=> {
-			e.preventDefault()
-			location.href="/admin"
-		})
-		$('#access_button').click( e=> {
-			$.ajax({
-				
+			$('#access_button')
+			.click( e=> {
+				e.preventDefault()
+			$('#main_r').empty()
+			$('#main_r').html(adminVue2.login())
+			$(`<input type="button"/>`)
+			.attr({value:'로그인'})
+			.css({width: '200px', height: '100px', 'font-size':'30px'})
+			.appendTo('#login_box')
+			.click( e=> {
+				e.preventDefault()
+				$.ajax({
+					url:'/admins/login',
+					type:'post',
+					data:JSON.stringify({
+						employNumber:$('#employNumber').val(),
+						password:$('#password').val()
+					}),
+					dataType:'json',
+					contentType:'application/json',
+					success: d=> {
+						if(d === 'SUCCESS'){
+							alert('로그인 성공')
+							location.href="/admin"
+						}
+					},
+					error: (req, x, error) => {
+						alert(req.status)
+					}
+				})
+			})
+			$(`<input type="button/>"`)
+			.attr({value:'취소'})
+			.css({width: '200px', height: '100px', 'font-size':'30px'})
+			.appendTo('#login_box')
+			.click( e=> {
+				e.preventDefault()
+				alert('취소')
 			})
 			})
-		$('#userjoin_button').click( e=> {
-			location.href="user/join.html"
+		}).fail(()=>{
+			alert(WHEN_ERROR)
 		})
-		$('#userlogin_button').click( e=> {
-			location.href="user/login.html"
-		})
-		setContentView()
-	}
+		
+		}
 	let setContentView = () => {
 		$('#first_page').css({width:'80%', height:'900px'}).addClass('border_black center')
 		$('#first_page tr td').addClass('border_black')
