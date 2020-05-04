@@ -38,7 +38,6 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<Admin> findAll() {
-		
 		return adminDao.selectAll();
 	}
 

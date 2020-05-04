@@ -8,7 +8,7 @@ public interface UserService {
 
 	public List<User> findAll();
 
-	public User findOne(String userid);
+	public User findOne(String name);
 
 	public boolean modify(User user);
 

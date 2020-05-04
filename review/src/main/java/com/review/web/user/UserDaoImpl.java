@@ -70,8 +70,14 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User selectOne(String userid) {
+	public User selectOne(String name) {
 		User returnUser = null;
+		List<User> userList = selectAll();
+		for(int i=0; i<userList.size(); i++) {
+			if(name.equals(userList.get(i).getName())) {
+				returnUser = userList.get(i);
+			}
+		}
 		return returnUser;
 	}
 

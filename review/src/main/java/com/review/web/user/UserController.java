@@ -30,9 +30,9 @@ public class UserController {
 		return userService.findAll();
 	}
 	
-	@GetMapping("{userid}")
-	public User detail(@PathVariable String userid) {
-		return userService.findOne(userid);
+	@GetMapping("{name}")
+	public User detail(@PathVariable String name) {
+		return userService.findOne(name);
 	}
 	
 	@PutMapping("{userid}")

@@ -8,7 +8,7 @@ public interface UserDao {
 
 	List<User> selectAll();
 
-	User selectOne(String userid);
+	User selectOne(String name);
 
 	boolean update(User user);
 

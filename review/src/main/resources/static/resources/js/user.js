@@ -3,10 +3,8 @@ var user = user || {}
 user = (()=>{
 	const WHEN_ERROR = `호출하는 JS 파일을 찾지 못했습니다.`
 	let admin_vue
-	let user_vue
 	let init = () => {
 		admin_vue = `/resources/vue/admin_vue.js`
-		user_vue = `/resources/vue/user_vue.js`
 		onCreate()
 	}
 	let onCreate = () =>{
