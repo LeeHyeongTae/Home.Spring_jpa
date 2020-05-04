@@ -41,7 +41,7 @@ admin = (() => {
                         .css({cursor: 'pointer',color: 'blue'})
                         .appendTo("#user_"+(i+1))
                         .click(e => {
-                        	alert(`${j.userid}`)
+                        	
                         })
                         
 			}) // each

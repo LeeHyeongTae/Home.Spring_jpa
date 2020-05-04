@@ -3,8 +3,10 @@ var user = user || {}
 user = (()=>{
 	const WHEN_ERROR = `호출하는 JS 파일을 찾지 못했습니다.`
 	let admin_vue
+	let user_vue
 	let init = () => {
 		admin_vue = `/resources/vue/admin_vue.js`
+		user_vue = `/resources/vue/user_vue.js`
 		onCreate()
 	}
 	let onCreate = () =>{
@@ -13,6 +15,7 @@ user = (()=>{
 		).done(()=>{
 			setContentView()
 			$('#register_a').click(e=>{
+				e.preventDefault()
 		     	$('#content').empty()
 		     	$('#content').html(adminVue.join())
 		     	$(`<input type="button"/>`)
@@ -20,6 +23,7 @@ user = (()=>{
 		     	.css({width: '200px', height: '100px','font-size': '30px'})
 		     	.appendTo('#button_box')
 		     	.click(e => {
+		     		e.preventDefault()
 		     		alert('등록버튼 클릭')
 		     	})
 		     	$(`<input type="button"/>`)
@@ -27,7 +31,8 @@ user = (()=>{
 		     	.css({width: '200px', height: '100px','font-size': '30px'})
 		     	.appendTo('#button_box')
 		     	.click( e=>{
-		     		alert('취소버튼 클릭')
+		     		e.preventDefault()
+		     		location.href='/home'
 		     	})
 		     	
 		     })
@@ -62,13 +67,33 @@ user = (()=>{
 				 .appendTo('#login_box')
 				 .click(e => {
 					 e.preventDefault()
-				 })
-				   	
-		    	 
-		    	 
-		    	 
-			    
+					 location.href='/home'
+				 	}) 
+				 	
 		    	})
+		    
+		    $('#join_a').click( e=> {
+		    	e.preventDefault()
+		    	$('#content').empty()
+		    	$('#content').html(userVue.join())
+		    	$(`<input type="button"/>`)
+		    	.attr({value:'회원가입'})
+		    	.appendTo('#button_box')
+		    	.click( e=> {
+		    		e.preventDefault()
+		    		location.href=''
+		    	})
+		    	$(`<input type="button"/>`)
+		    	.attr({value:'취소'})
+		    	.appendTo('#button_box')
+		    	.click( e => {
+		    		e.preventDefault()
+		    		location.href='/home'
+		    	})
+		    })
+		    $('#login_a').click( e=> {
+		    	e.preventDefault()
+		    })
 		}).fail(()=>{
 			alert(WHEN_ERROR)
 		})
