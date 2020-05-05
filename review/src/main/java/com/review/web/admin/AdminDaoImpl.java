@@ -22,9 +22,9 @@ public class AdminDaoImpl implements AdminDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer =  new BufferedWriter(
 									 new FileWriter(
-									 new File(ADMIN_PATH+"admin_list.csv")));
-			writer.write(admin.toString());
+									 new File(ADMIN_PATH+"admin_list.csv"), true));
 			writer.newLine();
+			writer.write(admin.toString());
 			writer.flush();
 		} catch(Exception e) {
 			System.out.println("save error");

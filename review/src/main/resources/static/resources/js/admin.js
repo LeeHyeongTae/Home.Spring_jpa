@@ -44,21 +44,52 @@ admin = (() => {
                         	e.preventDefault()
                         	$('#content').empty()
                         	$('#content').html(adminVue.detail())
-                        	$.getJSON(`/users/${j.name}`, d=> {
-                        		
-//                        		$('#name').text(d.name)
-//                        		$('#userid').text(d.userid)
-//                        		$('#ssn').text(d.ssn)
-//                        		$('#email').text(d.email)
-//                        		$('#phoneNumber').text(d.phoneNumber)
-//                        		$('#registerDate').text(d.registerDate)
+                        	$.getJSON(`/users/${j.userid}`, d=> {
+                        		$('#name').text(d.name)
+                        		$('#userid').text(d.userid)
+                        		$('#ssn').text(d.ssn)
+                        		$('#email').text(d.email)
+                        		$('#phoneNumber').text(d.phoneNumber)
+                        		$('#registerDate').text(d.registerDate)
                         	})
                         	
                         })
                         
 			}) // each
 		}) // getJSON
-		
+		$('#admin_list_button').click( e=> {
+			e.preventDefault()
+			$('#content').empty()
+			$('#content').html(adminVue.adminList())
+			$.getJSON('/admins', d=> {
+				$.each(d, (i, j) => {
+				$(`<tr>
+                        	<td>
+                                <span>${i+1}</span>
+                            </td>
+                            <td>
+                                <span>${j.employNumber}</span>
+                            </td>
+                            <td>
+                                <span>${j.name}</span>
+                            </td>
+                             <td>
+                                <span>${j.position}</span>
+                            </td>
+                           <td>
+                                <span>${j.email}</span>
+                            </td>
+                            <td>
+                                <span>${j.phoneNumber}</span>
+                            </td>
+                            <td>
+                                <span>${j.registerDate}</span>
+                            </td>
+                            
+                        </tr>`).appendTo('#userData')
+			})
+		})
+	})
 	}
 	let setContentView = () => {
 		$('#userData tr').first().css({'background-color':'yellow'})
