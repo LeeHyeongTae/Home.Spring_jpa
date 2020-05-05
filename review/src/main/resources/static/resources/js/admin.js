@@ -37,46 +37,28 @@ admin = (() => {
                             </td>
                             
                         </tr>`).appendTo('#userData')
-                        
                         $(`<a>${j.name}</a>`)
-                        .css({cursor: 'pointer',color: 'blue'})
                         .appendTo("#user_"+(i+1))
+                        .css({cursor: 'pointer',color: 'blue'})
                         .click(e => {
+                        	e.preventDefault()
                         	$('#content').empty()
-                        	$.getJSON('/users'+`${j.name}`, d=> {
-                        		$(`<tr>
-                                    	<td>
-                                            <span>1</span>
-                                        </td>
-                                        <td>
-                                            <span>${d.userid}</span>
-                                        </td>
-                                        <td>
-                                            <span>${d.name}</span>
-                                        </td>
-                                         <td>
-                                            <span>${d.ssn}</span>
-                                        </td>
-                                       <td>
-                                            <span>${d.email}</span>
-                                        </td>
-                                        <td>
-                                            <span>${d.phoneNumber}</span>
-                                        </td>
-                                        <td>
-                                            <span>${d.registerDate}</span>
-                                        </td>
-                                        
-                                    </tr>`).appendTo('#userData')
+                        	$('#content').html(adminVue.detail())
+                        	$.getJSON(`/users/${j.name}`, d=> {
+                        		
+//                        		$('#name').text(d.name)
+//                        		$('#userid').text(d.userid)
+//                        		$('#ssn').text(d.ssn)
+//                        		$('#email').text(d.email)
+//                        		$('#phoneNumber').text(d.phoneNumber)
+//                        		$('#registerDate').text(d.registerDate)
                         	})
                         	
                         })
                         
 			}) // each
 		}) // getJSON
-//		$.('#user_list_button').click( e=> {
-//			$('#content').empty()
-//		})
+		
 	}
 	let setContentView = () => {
 		$('#userData tr').first().css({'background-color':'yellow'})
