@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.review.web.util.Messenger;
-//di commit
+
 @RestController
 @RequestMapping("/admins")
 public class AdminController {
@@ -22,14 +22,12 @@ public class AdminController {
 	
 	@PostMapping("/register")
 	public Messenger register(@RequestBody Admin admin) {
-		adminService.register(admin);
-		return Messenger.SUCCESS;
+		return (adminService.register(admin)) ? Messenger.SUCCESS:Messenger.FAIL;
 	}
 	
 	@PostMapping("/login")
 	public Messenger login(@RequestBody Admin admin) {
-		adminService.login(admin);
-		return Messenger.SUCCESS;
+		return (adminService.login(admin))? Messenger.SUCCESS:Messenger.FAIL;
 	}
 	@GetMapping("")
 	public List<Admin> list(){

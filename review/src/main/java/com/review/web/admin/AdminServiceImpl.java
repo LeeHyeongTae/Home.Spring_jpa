@@ -14,13 +14,13 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired AdminDao adminDao;
 	
 	@Override
-	public void register(Admin admin) {
-		//employNumber(4자리수 랜덤), userid, name, password, 
-		//position, address, profile, email, phoneNumber, registerDate(현재날짜)
+	public boolean register(Admin admin) {
+		boolean returnValue = false;
 		admin.setEmployNumber(createEmployNumber());
 		admin.setPassword("1");
 		admin.setRegisterDate(createCurrentDate());
 		adminDao.insert(admin);
+		return returnValue;
 	}
 
 	private String createCurrentDate() {
@@ -32,13 +32,11 @@ public class AdminServiceImpl implements AdminService{
 		for(int i=0; i<4; i++) {
 			startNum += String.valueOf((int)(Math.random()*10));
 		}
-		//String.format("%04d", Math.random()*10000+1000);
 		return startNum;
 	}
 
 	@Override
 	public List<Admin> findAll() {
-		
 		return adminDao.selectAll();
 	}
 
@@ -60,9 +58,12 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void login(Admin admin) {
-		// TODO Auto-generated method stub
-		
+	public boolean login(Admin admin) {
+		boolean returnValue = false;
+		if(admin.getPassword().equals(adminDao.selectOne(admin.getEmployNumber()).getPassword())) {
+			returnValue = true;
+		}
+		return returnValue;
 	}
 
 }

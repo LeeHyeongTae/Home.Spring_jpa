@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface AdminDao {
 
-	public void insert(Admin admin);
+	public boolean insert(Admin admin);
 
 	public List<Admin> selectAll();
 

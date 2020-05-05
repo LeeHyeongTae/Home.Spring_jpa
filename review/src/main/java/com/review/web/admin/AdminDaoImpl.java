@@ -8,27 +8,31 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class AdminDaoImpl implements AdminDao{
 
-	private static final String ADMIN_PATH = "/Users/ihyeongtae/git/repository2/review/src/main/resources/static/admin/";
+	private static final String ADMIN_PATH = "/Users/ihyeongtae/git/repository2/review/src/main/resources/static/resources/file/";
 
 	@Override
-	public void insert(Admin admin) {
+	public boolean insert(Admin admin) {
+		boolean returnValue = false;
 		try {
 			@SuppressWarnings("resource")
 			BufferedWriter writer =  new BufferedWriter(
 									 new FileWriter(
-									 new File(ADMIN_PATH+"list.csv")));
+									 new File(ADMIN_PATH+"admin_list.csv")));
 			writer.write(admin.toString());
 			writer.newLine();
 			writer.flush();
 		} catch(Exception e) {
 			System.out.println("save error");
 		}
+		if(admin.toString() != null) {
+			returnValue = true;
+		}
+		return returnValue;
 	}
 
 	@Override
@@ -38,7 +42,7 @@ public class AdminDaoImpl implements AdminDao{
 		try {
 			BufferedReader reader = new BufferedReader(
 									new FileReader(
-									new File(ADMIN_PATH+"list.csv")));
+									new File(ADMIN_PATH+"admin_list.csv")));
 			String admin = "";
 			while((admin = reader.readLine()) != null) {
 				list.add(admin);
@@ -70,14 +74,15 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public Admin selectOne(String employNumber) {
-		Admin admin = new Admin();
-		try {
-			//selectAll().contains(o);
-		} catch(Exception e) {
-			
+		Admin returnAdmin = new Admin();
+		List<Admin> list = selectAll();
+		for(int i=0; i<list.size(); i++) {
+			if(employNumber.equals(list.get(i).getEmployNumber())) {
+				returnAdmin = list.get(i);
+				break;
+			}
 		}
-		
-		return admin;
+		return returnAdmin;
 	}
 
 	@Override

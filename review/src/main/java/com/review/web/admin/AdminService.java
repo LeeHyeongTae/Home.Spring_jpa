@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface AdminService {
 	
-	public void register(Admin admin);
+	public boolean register(Admin admin);
 	
 	public List<Admin> findAll();
 	
@@ -17,5 +17,5 @@ public interface AdminService {
 	
 	public boolean remove(Admin admin);
 
-	public void login(Admin admin);
+	public boolean login(Admin admin);
 }
