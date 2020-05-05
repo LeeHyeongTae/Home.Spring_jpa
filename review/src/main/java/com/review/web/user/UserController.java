@@ -15,14 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.review.web.util.Messenger;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired UserService userService;
 	
 	@PostMapping("")
 	public Messenger join(User user) {
-		userService.add(user);
-		return Messenger.SUCCESS;
+		return (userService.add(user))?Messenger.SUCCESS:Messenger.FAIL;
 	}
 	
 	@GetMapping("")

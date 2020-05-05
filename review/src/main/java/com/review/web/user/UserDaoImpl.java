@@ -1,26 +1,80 @@
 package com.review.web.user;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl implements UserDao{
 
+	private static final String FILE_PATH = "/Users/ihyeongtae/git/repository2/review/src/main/resources/static/resources/file/";
+
 	@Override
 	public void insert(User user) {
-		// TODO Auto-generated method stub
-		
+		try {
+			@SuppressWarnings("resource")
+			BufferedWriter writer = new BufferedWriter(
+									new FileWriter(
+									new File(FILE_PATH+"user_list.csv")));
+			writer.write(user.toString());
+			writer.newLine();
+			writer.flush();
+		} catch (Exception e) {
+			System.out.println("save error");
+		}
 	}
 
 	@Override
-	public void selectAll() {
-		// TODO Auto-generated method stub
-		
+	public List<User> selectAll() {
+		List<User> returnList = new ArrayList<>();
+		List<String> list = new ArrayList<>();
+		try {
+			@SuppressWarnings("resource")
+			BufferedReader reader = new BufferedReader(
+									new FileReader(
+									new File(FILE_PATH+"user_list.csv")));
+			String message = "";
+			while((message = reader.readLine()) != null) {
+				list.add(message);
+			}
+		} catch(Exception e) {
+			System.out.println("read error");
+		}
+			User u = null;
+			for(int i=0; i<list.size(); i++) {
+				String[] arr = list.get(i).split(",");
+				u = new User();
+				u.setUserid(arr[0]);
+				u.setPassword(arr[1]);
+				u.setName(arr[2]);
+				u.setSsn(arr[3]);
+				u.setAddress(arr[4]);
+				u.setProfile(arr[5]);
+				u.setEmail(arr[6]);
+				u.setPhoneNumber(arr[7]);
+				u.setRegisterDate(arr[8]);
+				returnList.add(u);
+			}
+		return returnList;
 	}
 
 	@Override
-	public void selectOne(String userid) {
-		// TODO Auto-generated method stub
-		
+	public User selectOne(String userid) {
+		List<User> userList = selectAll();
+		User returnUser = null;
+		for(int i=0; i<userList.size(); i++) {
+			if(userid.equals(userList.get(i).getUserid())) {
+				returnUser = userList.get(i);
+				break;
+			}
+		}
+		return returnUser;
 	}
 
 	@Override

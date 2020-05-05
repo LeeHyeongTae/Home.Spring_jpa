@@ -8,13 +8,12 @@ import lombok.Setter;
 @Component
 @Getter @Setter
 public class Admin {
-	private String employNumber, userid, name, password, 
-	position, address, profile, email, phoneNumber, registerDate;
+	private String employNumber, name, password, 
+	position, profile, email, phoneNumber, registerDate;
 	
 	@Override
 	public String toString() {
-		return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", 
-				employNumber,userid,name,password,position,
-				address,profile,email,phoneNumber,registerDate);
+		return String.format("%s,%s,%s,%s,%s,%s,%s,%s", 
+				employNumber,password,name,position,profile,email,phoneNumber,registerDate);
 	}
 }

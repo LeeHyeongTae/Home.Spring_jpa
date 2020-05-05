@@ -25,7 +25,27 @@ user = (()=>{
 		     	.appendTo('#button_box')
 		     	.click(e => {
 		     		e.preventDefault()
-		     		alert('등록버튼 클릭')
+		     		$.ajax({
+		     			url:'/admins/register',
+		     			type:'post',
+		     			data:JSON.stringify({
+		     				name:$('#name').val(),
+		     				position:$('#position').val(),
+		     				email:$('#email').val(),
+		     				phoneNumber:$('#phoneNumber').val()
+		     			}),
+		     			dataType:'json',
+		     			contentType:'application/json',
+		     			success: d=> {
+		     				if(d === 'SUCCESS'){
+		     					loctaion.href='/home'
+		     				}
+		     			},
+		     			error: (req, x, error) => {
+		     				alert(req.status)
+		     			}
+		     			
+		     		})
 		     	})
 		     	$(`<input type="button"/>`)
 		     	.attr({value:'취소'})

@@ -55,15 +55,13 @@ public class AdminDaoImpl implements AdminDao{
 				//employNumber, userid, name, password, 
 				//position, address, profile, email, phoneNumber, registerDate
 				a.setEmployNumber(arr[0]);
-				a.setUserid(arr[1]);
+				a.setPassword(arr[1]);
 				a.setName(arr[2]);
-				a.setPassword(arr[3]);
-				a.setPosition(arr[4]);
-				a.setAddress(arr[5]);
-				a.setProfile(arr[6]);
-				a.setEmail(arr[7]);
-				a.setPhoneNumber(arr[8]);
-				a.setRegisterDate(arr[9]);
+				a.setPosition(arr[3]);
+				a.setProfile(arr[4]);
+				a.setEmail(arr[5]);
+				a.setPhoneNumber(arr[6]);
+				a.setRegisterDate(arr[7]);
 				adminlist.add(a);
 			}
 		} catch(Exception e) {
