@@ -2,7 +2,7 @@
 const lostVue = {
 	list: () => {
 		return `<div id="content" style="width: 1200px; height: 500px;margin: 0 auto">
-            		<table id="userData">
+            		<table id="lostData">
                         <tr>
                             <td>
                                 <a id="number">No.</a>

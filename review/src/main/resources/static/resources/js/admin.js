@@ -106,7 +106,7 @@ admin = (() => {
 			e.preventDefault()
 			$('#content').empty()
 			$('#content').html(lostVue.list())
-			$('#userData tr').first().css({'background-color':'yellow'})
+			$('#lostData tr').first().css({'background-color':'yellow'})
 			$.getJSON('/losts', d => {
 				$('#total_count').text('총분실물 수  : '+d.length)
 				$.each(d, (i, j) => {
@@ -129,14 +129,14 @@ admin = (() => {
 	                            <td>
 	                                <span>${j.lostLocation}</span>
 	                            </td>
-	                        </tr>`).appendTo('#userData')
+	                        </tr>`).appendTo('#lostData')
 	                        $(`<a>${j.lostName}</a>`)
 	                        .appendTo('#lost_'+(i+1))
 	                        .css({cursor: 'pointer',color: 'blue'})
 	                        .click( e=> {
 	                        	e.preventDefault()
-	                        	$('#userData').empty()
-	                        	$(lostVue.detail()).appendTo('#userData')
+	                        	$('#lostData').empty()
+	                        	$(lostVue.detail()).appendTo('#lostData')
 	                        	$.getJSON(`/losts/${j.lostId}`, d => {
 	                        		$('#lostid').text(d.lostId)
 	                        		$('#lostname').text(d.lostName)
