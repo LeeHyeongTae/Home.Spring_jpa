@@ -68,9 +68,9 @@ public class UserDaoImpl implements UserDao{
 	public User selectOne(String userid) {
 		List<User> userList = selectAll();
 		User returnUser = null;
-		for(int i=0; i<userList.size(); i++) {
-			if(userid.equals(userList.get(i).getUserid())) {
-				returnUser = userList.get(i);
+		for(User u : userList) {
+			if(userid.equals(u.getUserid())) {
+				returnUser = u;
 				break;
 			}
 		}

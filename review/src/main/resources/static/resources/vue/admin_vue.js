@@ -63,46 +63,6 @@ const adminVue = {
 				  </article>
 			`
 		},
-		detail : () =>{
-			return `
-					<div id="content" style="width: 1200px; height: 500px;margin: 0 auto">
-            		<table id="userData">
-            			<tr>
-            			<td><img src=""></td>
-            			</tr>
-                        <tr>
-                            <td>
-                            	<label>number</label><br>
-                                <a id="number">1</a>
-                            </td>
-                            <td>
-                            	<label>ID</label><br>
-                                <a id="userid"></a>
-                            </td>
-                             <td>
-                             	<label>name</label><br>
-                                <a id="name"></a>
-                            </td>
-                           <td>
-                           		<label>ssn</label><br>
-                                <a id="ssn"></a>
-                            </td>
-                            <td>
-                             	<label>E-mail</label><br>
-                                <a id="email"></a>
-                            </td>
-                            <td>
-                            	<label>phoneNumber</label><br>
-                                <a id="phoneNumber"></a>
-                            </td>
-                            <td>
-                            	<label>registerDate</label><br>
-                                <a id="registerDate"></a>
-                            </td>
-                        </tr>
-                    </table>
-            	</div>`
-		},
 		adminList : () => {
 			return`
 			<div id="content" style="width: 1200px; height: 500px;margin: 0 auto">

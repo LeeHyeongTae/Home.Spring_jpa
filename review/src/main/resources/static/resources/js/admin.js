@@ -3,12 +3,20 @@
 var admin = admin || {}
 
 admin = (() => {
+	const WHEN_ERROR = `error`
 	let admin_vue
+	let user_vue
 	let init = () => {
 		admin_vue = `/resources/vue/admin_vue.js`
+		user_vue = `/resources/vue/user_vue.js`
 		onCreate()
 	}
 	let onCreate = () => {
+		$.when(
+			$.getScript(user_vue)
+		).done(()=>{
+			
+		}).fail(()=>{alert(WHEN_ERROR)})
 		setContentView()
 		$.getJSON('/users', d => {
 			$('#total_count').text('총회원수  : '+d.length)
@@ -42,8 +50,8 @@ admin = (() => {
                         .css({cursor: 'pointer',color: 'blue'})
                         .click(e => {
                         	e.preventDefault()
-                        	$('#content').empty()
-                        	$('#content').html(adminVue.detail())
+                        	$('#userData').empty()
+                        	$(userVue.detail()).appendTo('#userData')
                         	$.getJSON(`/users/${j.userid}`, d=> {
                         		$('#name').text(d.name)
                         		$('#userid').text(d.userid)
@@ -52,7 +60,6 @@ admin = (() => {
                         		$('#phoneNumber').text(d.phoneNumber)
                         		$('#registerDate').text(d.registerDate)
                         	})
-                        	
                         })
                         
 			}) // each
@@ -89,6 +96,10 @@ admin = (() => {
                         </tr>`).appendTo('#userData')
 			})
 		})
+		$('#userData tr').first().css({'background-color':'yellow'})
+	})
+	$('#user_list_button').click( e=> {
+		location.href='/admin'
 	})
 	}
 	let setContentView = () => {
