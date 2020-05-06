@@ -28,11 +28,12 @@ public class LoseDaoImpl implements LoseDao{
 			reader.close();
 		} catch (Exception e) {
 			System.out.println("file read error");
+			e.printStackTrace();
 		}
 		Lose l = null;
-		for(int i=0; i<list.size(); i++) {
+		for(String s: list) {
 			l = new Lose();
-			String[] arr = list.get(i).split(",");
+			String[] arr = s.split(",");
 			l.setLostId(arr[0]);
 			l.setLostName(arr[1]);
 			l.setLostDate(arr[2]);
