@@ -10,10 +10,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.review.web.util.Data;
+
 @Repository
 public class AdminDaoImpl implements AdminDao{
 
-	private static final String ADMIN_PATH = "/Users/ihyeongtae/git/repository2/review/src/main/resources/static/resources/file/";
 
 	@Override
 	public boolean insert(Admin admin) {
@@ -22,7 +23,7 @@ public class AdminDaoImpl implements AdminDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer =  new BufferedWriter(
 									 new FileWriter(
-									 new File(ADMIN_PATH+"admin_list.csv"), true));
+									 new File(Data.ADMINS.toString()), true));
 			writer.newLine();
 			writer.write(admin.toString());
 			writer.flush();
@@ -42,7 +43,7 @@ public class AdminDaoImpl implements AdminDao{
 		try {
 			BufferedReader reader = new BufferedReader(
 									new FileReader(
-									new File(ADMIN_PATH+"admin_list.csv")));
+									new File(Data.ADMINS.toString())));
 			String admin = "";
 			while((admin = reader.readLine()) != null) {
 				list.add(admin);

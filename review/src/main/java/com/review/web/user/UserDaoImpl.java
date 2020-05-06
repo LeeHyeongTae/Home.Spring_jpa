@@ -10,10 +10,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.review.web.util.Data;
+
 @Repository
 public class UserDaoImpl implements UserDao{
-
-	private static final String FILE_PATH = "/Users/ihyeongtae/git/repository2/review/src/main/resources/static/resources/file/";
 
 	@Override
 	public void insert(User user) {
@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(
 									new FileWriter(
-									new File(FILE_PATH+"user_list.csv")));
+									new File(Data.USERS.toString())));
 			writer.write(user.toString());
 			writer.newLine();
 			writer.flush();
@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao{
 			@SuppressWarnings("resource")
 			BufferedReader reader = new BufferedReader(
 									new FileReader(
-									new File(FILE_PATH+"user_list.csv")));
+									new File(Data.USERS.toString())));
 			String message = "";
 			while((message = reader.readLine()) != null) {
 				list.add(message);
